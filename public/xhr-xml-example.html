@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>XHR with XML Example</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>XHR with XML Example</h1>
+      <p>
+        The orignal XMLHttpRequest feature developed by Microsoft. In this
+        example, it is used to retrieve some XML data. Once retrieved the data
+        would need to be extracted from the XML. This is somewhat more
+        complicated than working with the simple structure afforded by JSON
+        data.
+      </p>
+    </div>
+  </body>
+  <script>
+    (function() {
+      var api = "data/buses.xml";
+      // var api = "//www.ywonline.co.uk/web/newincid.nsf/incidentsjson";
+
+      var myXHR = new XMLHttpRequest();
+      myXHR.open("GET", api, true);
+      myXHR.addEventListener("readystatechange", showData);
+      myXHR.send();
+      function showData() {
+        if (myXHR.readyState == 4) {
+          console.dir(myXHR.responseXML);
+        }
+      }
+    })();
+  </script>
+</html>

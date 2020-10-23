@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fetch Await Example</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Fetch Await Example</h1>
+      <p>
+        This represents a newer way to avoid callback 'hell' but do check
+        <a href="https://caniuse.com/#search=await" target="_new">caniuse</a>.
+      </p>
+      <p>Is syntactical sugar allowing the removal of <code>then()</code>.</p>
+    </div>
+  </body>
+  <script>
+    (function() {
+      let api = "//www.ywonline.co.uk/web/newincid.nsf/incidentsjson";
+      async function getData() {
+        const response = await fetch(api);
+        const json = await response.json();
+        return json;
+      }
+      getData()
+        .then(myJson => {
+          console.dir(myJson);
+        })
+        .catch(() => console.log("damn that Jason"));
+    })();
+  </script>
+</html>

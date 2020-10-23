@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>XHR with JSON Example</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>XHR with JSON Example</h1>
+      <p>
+        XMLHttpRequest can be used to retrieve text files as well as XML. Most
+        commonly these text files are in the JSON format.
+      </p>
+    </div>
+  </body>
+  <script>
+    (function() {
+      var api = "data/myData.json";
+      // var api = "//www.ywonline.co.uk/web/newincid.nsf/incidentsjson";
+
+      var myXHR = new XMLHttpRequest();
+      myXHR.open("GET", api, true);
+      myXHR.addEventListener("readystatechange", showData);
+      myXHR.send();
+      function showData() {
+        if (myXHR.readyState == 4) {
+          console.dir(myXHR.responseText);
+          // data from server is a string make into an object
+          // parse to make an object
+          var myJson = JSON.parse(myXHR.responseText);
+          console.dir(myJson);
+          // JSON.stringify does the opposite
+          // Javascript object is turned into a string
+          var myStr = JSON.stringify(myJson);
+          console.dir(myStr);
+        }
+      }
+    })();
+  </script>
+</html>

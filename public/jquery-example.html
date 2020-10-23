@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>jQuery Example</h1>
+      <p>
+        jQuery is a popular helper library for Javascript that has many AJAX
+        features. It was designed to make common Javascript tasks easier and was
+        particularly useful when browser support for Javascript was
+        inconsistent. Arguably it is now drawing to the end of its shelf-life
+        with the arrival of ES6/ESNEXT features like the fetch API.
+      </p>
+    </div>
+  </body>
+  <script>
+    (function() {
+      //   var api = "data/myData.json";
+      var api = "//www.ywonline.co.uk/web/newincid.nsf/incidentsjson";
+      $.getJSON(api, function(myData) {
+        console.dir(myData);
+      });
+    })();
+  </script>
+</html>

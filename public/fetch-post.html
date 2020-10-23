@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Posting Data with Fetch</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Posting Data with Fetch</h1>
+      <p>
+        AJAX technologies can also send data to the server as well as retrieve
+        it. It this example, the data from the form is send via
+        <code>fetch</code> using the HTTP method of <code>POST</code>
+      </p>
+      <form id="myForm">
+        <div>
+          <label for="firstname">First Name</label>
+          <input type="text" name="firstname" id="firstname" />
+        </div>
+        <div>
+          <label for="surname">Surname</label>
+          <input type="text" name="surname" id="surname" />
+        </div>
+        <div>
+          <input type="submit" value="Send Data" />
+        </div>
+      </form>
+    </div>
+    <script>
+      (function() {
+        var api = "/api/postHandler";
+        var myForm = document.getElementById("myForm");
+        myForm.addEventListener("submit", ev => {
+          ev.preventDefault();
+          var formData = new FormData(myForm);
+          var sendObject = {};
+          console.dir(formData);
+          formData.forEach(function(value, key) {
+            sendObject[key] = value;
+          });
+          console.dir(sendObject);
+          var sendStr = JSON.stringify(sendObject);
+          console.dir(sendStr);
+
+          //
+          fetch(api, {
+            method: "post",
+            body: sendStr,
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(response => response.json())
+            .then(respJson => {
+              console.dir(respJson);
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>
