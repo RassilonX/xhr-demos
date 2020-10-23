@@ -9,6 +9,9 @@ code {
   font-family: "Courier New", Courier, monospace;
   border-bottom: 1px dashed #dcdcdc;
 }
+form>div{
+  margin-top:20px;
+}
 label {
   display: block;
 }
