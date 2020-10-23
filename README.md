@@ -1,7 +1,7 @@
 # XMLHttpRequest Demos
 
-##Vanilla Javascript
+## Vanilla Javascript
 
-##ES6 fetch()
+## ES6 fetch()
 
-##jQuery
+## jQuery
